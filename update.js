@@ -47,18 +47,19 @@ function update(dataPath, outputPath) {
     if (!recovered[recoverdCountry]) {
       console.warn(`${recoverdCountry} is missing from the recovered dataset`);
     }
-
-    results[country] = dates.map(date => {
-      return {
-        date,
-        confirmed: confirmed[country][date],
-        deaths: deaths[country][date],
-        recovered:
-          recovered[recoverdCountry] && recovered[recoverdCountry][date] != null
+    
+    results[country] = results[country] || {};
+    
+    for(let i = 0; i < dates.length; i++) {
+      let date = dates[i];
+      results[country][date] = [
+        confirmed[country][date] || 0,
+        deaths[country][date] || 0,
+        recovered[recoverdCountry] && recovered[recoverdCountry][date] != null
             ? recovered[recoverdCountry][date]
-            : null
-      };
-    });
+            : 0
+      ];
+    }
   });
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
