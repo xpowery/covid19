@@ -54,10 +54,10 @@ function update(dataPath, outputPath) {
       let date = dates[i];
       results[country][date] = [
         confirmed[country][date] || 0,
-        deaths[country][date] || 0,
         recovered[recoverdCountry] && recovered[recoverdCountry][date] != null
             ? recovered[recoverdCountry][date]
-            : 0
+            : 0,
+        deaths[country][date] || 0,
       ];
     }
   });
