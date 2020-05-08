@@ -1,4 +1,4 @@
-name: "Extract Time Series"
+name: "Extract Time Series From JHU"
 runs:
   using: "node12"
   main: "action.js"
