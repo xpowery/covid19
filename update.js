@@ -48,11 +48,12 @@ function update(dataPath, outputPath) {
       console.warn(`${recoverdCountry} is missing from the recovered dataset`);
     }
     
-    results[country] = results[country] || {};
+    const countryCode = country.toLowerCase().replace(/ /g, '-').replace(/\*/g, '');
+    results[countryCode] = results[countryCode] || {};
     
     for(let i = 0; i < dates.length; i++) {
       let date = dates[i];
-      results[country][date] = [
+      results[countryCode][date] = [
         confirmed[country][date] || 0,
         recovered[recoverdCountry] && recovered[recoverdCountry][date] != null
             ? recovered[recoverdCountry][date]
