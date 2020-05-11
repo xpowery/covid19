@@ -4,7 +4,7 @@ The json contains the number of Coronavirus confirmed cases, deaths, and recover
 
 ```
 {
-  "India": {
+  "india": {
     "2020-1-22" : [0, 0, 0],
     "2020-1-23" : [0, 0, 0],
     ...
@@ -19,8 +19,8 @@ For example, if you want to use it from a web site:
 fetch("https://xpowery.github.io/covid19/timeseries.json")
   .then(response => response.json())
   .then(data => {
-    for(let date in data["India"]) {
-      const [confirmed, recovered, deaths] = data["India"][date];
+    for(let date in data["india"]) {
+      const [confirmed, recovered, deaths] = data["india"][date];
     }
   });
 ```
